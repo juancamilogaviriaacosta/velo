@@ -3,6 +3,7 @@ package co.com.velo.controllers;
 import co.com.velo.entidades.Comida;
 import co.com.velo.controllers.util.JsfUtil;
 import co.com.velo.controllers.util.JsfUtil.PersistAction;
+import co.com.velo.entidades.Categoria;
 import co.com.velo.facades.ComidaFacade;
 
 import java.io.Serializable;
@@ -27,6 +28,7 @@ public class ComidaController implements Serializable {
     private co.com.velo.facades.ComidaFacade ejbFacade;
     private List<Comida> items = null;
     private Comida selected;
+    private Integer categoriaSeleccionada;
 
     public ComidaController() {
     }
@@ -56,6 +58,7 @@ public class ComidaController implements Serializable {
     }
 
     public void create() {
+        selected.setCategoria(new Categoria(categoriaSeleccionada));
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ComidaCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -162,4 +165,11 @@ public class ComidaController implements Serializable {
 
     }
 
+    public Integer getCategoriaSeleccionada() {
+        return categoriaSeleccionada;
+    }
+
+    public void setCategoriaSeleccionada(Integer categoriaSeleccionada) {
+        this.categoriaSeleccionada = categoriaSeleccionada;
+    }
 }

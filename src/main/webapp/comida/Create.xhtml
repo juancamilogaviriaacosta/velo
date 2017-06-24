@@ -12,8 +12,6 @@
             <h:form id="ComidaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{comidaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateComidaLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{comidaController.selected.id}" title="#{bundle.CreateComidaTitle_id}" required="true" requiredMessage="#{bundle.CreateComidaRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateComidaLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{comidaController.selected.nombre}" title="#{bundle.CreateComidaTitle_nombre}" />
                         <p:outputLabel value="#{bundle.CreateComidaLabel_disponibilidad}" for="disponibilidad" />
@@ -25,10 +23,11 @@
                         <p:outputLabel value="#{bundle.CreateComidaLabel_caracteristicas}" for="caracteristicas" />
                         <p:inputText id="caracteristicas" value="#{comidaController.selected.caracteristicas}" title="#{bundle.CreateComidaTitle_caracteristicas}" />
                         <p:outputLabel value="#{bundle.CreateComidaLabel_categoria}" for="categoria" />
-                        <p:selectOneMenu id="categoria" value="#{comidaController.selected.categoria}" >
+                        <p:selectOneMenu id="categoria" value="#{comidaController.categoriaSeleccionada}" >
                             <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"
                                            var="categoriaItem"
-                                           itemValue="#{categoriaItem}"/>
+                                           itemValue="#{categoriaItem.id}"
+                                           itemLabel="#{categoriaItem.nombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{comidaController.create}" value="#{bundle.Save}" update="display,:ComidaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ComidaCreateDialog');"/>

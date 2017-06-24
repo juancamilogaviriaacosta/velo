@@ -1,5 +1,6 @@
 package co.com.velo.entidades;
 
+import co.com.velo.utils.Utilidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -81,5 +82,10 @@ public class Pedido implements Serializable {
 
     public void setComidaCantidad(List<ComidaCantidad> comidaCantidad) {
         this.comidaCantidad = comidaCantidad;
+    }
+    
+    @Override
+    public String toString() {
+        return "{\"nombreCliente\":\"" + nombreCliente + "\",\"entregado\" : \"" + entregado + "\", \"comidaCantidad\" : "+Utilidades.toJsonArrEntity(comidaCantidad)+"}";
     }
 }

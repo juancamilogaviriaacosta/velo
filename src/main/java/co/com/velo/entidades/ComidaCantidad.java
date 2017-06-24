@@ -68,4 +68,9 @@ public class ComidaCantidad implements Serializable {
     public void setComida(Comida comida) {
         this.comida = comida;
     }
+    
+    @Override
+    public String toString() {
+        return "{\"cantidad\":\"" + cantidad + "\",\"comida\" : " + comida + "}";
+    }
 }

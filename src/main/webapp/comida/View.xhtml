@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComidaViewDlg" widgetVar="ComidaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComidaTitle}">
+            <h:form id="ComidaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comidaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComidaLabel_id}"/>
+                        <h:outputText value="#{comidaController.selected.id}" title="#{bundle.ViewComidaTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewComidaLabel_nombre}"/>
+                        <h:outputText value="#{comidaController.selected.nombre}" title="#{bundle.ViewComidaTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewComidaLabel_disponibilidad}"/>
+                        <p:selectBooleanCheckbox value="#{comidaController.selected.disponibilidad}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewComidaLabel_precioBase}"/>
+                        <h:outputText value="#{comidaController.selected.precioBase}" title="#{bundle.ViewComidaTitle_precioBase}"/>
+                        <h:outputText value="#{bundle.ViewComidaLabel_tiempoPreparacion}"/>
+                        <h:outputText value="#{comidaController.selected.tiempoPreparacion}" title="#{bundle.ViewComidaTitle_tiempoPreparacion}"/>
+                        <h:outputText value="#{bundle.ViewComidaLabel_caracteristicas}"/>
+                        <h:outputText value="#{comidaController.selected.caracteristicas}" title="#{bundle.ViewComidaTitle_caracteristicas}"/>
+                        <h:outputText value="#{bundle.ViewComidaLabel_categoria}"/>
+                        <h:outputText value="#{comidaController.selected.categoria}" title="#{bundle.ViewComidaTitle_categoria}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComidaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

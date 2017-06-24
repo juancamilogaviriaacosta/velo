@@ -115,4 +115,9 @@ public class Comida implements Serializable {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    @Override
+    public String toString() {
+        return "{\"id\":\"" + id + "\",\"nombre\" : \"" + nombre + "\"}";
+    }
 }

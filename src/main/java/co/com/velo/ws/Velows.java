@@ -31,6 +31,7 @@ public class Velows {
 
     @WebMethod(operationName = "getMenu")
     public List<Comida> getMenu() {
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         List<Comida> comidas = comidaFacade.ejecutarNamedQuery("Pedido.findByDisponibilidad", "disponibilidad", true);
         return comidas;
     }
